@@ -17,6 +17,8 @@ app.use(express.json()); // Parse JSON request bodies
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    tls: true,  // Ensure TLS is enabled
+    tlsAllowInvalidCertificates: true,  // Allow self-signed certs if needed
 })
 const db = mongoose.connection;
 db.on('error', (error) => console.error('MongoDB connection error:'));
