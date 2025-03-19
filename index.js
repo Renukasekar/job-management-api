@@ -74,6 +74,24 @@ app.get('/jobs', async (req, res) => {
     }
 });
 
+app.get('/job-types', async (req, res) => {
+    try {
+        const jobType = await JobType.find();
+        res.json(jobType);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get('/locations', async (req, res) => {
+    try {
+        const location = await Location.find();
+        res.json(location);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+);
 
 // Define port from environment or default
 const PORT = process.env.PORT || 10000;
